@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharat Ekatvam Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            --primary-gold: #D4AF37;       /* Metallic Gold */
+            --primary-gold-dark: #B59020;  /* Darker Gold for hover */
+            --secondary-brown: #3E2723;    /* Deep Coffee Brown */
+            --text-dark: #2C2C2C;          /* Soft Black */
+            --text-light: #FDFBF7;         /* Ivory White */
+            --bg-cream: #F9F7F2;           /* Light Cream Background */
+            --bg-white: #FFFFFF;
+            --shadow-card: 0 10px 30px rgba(62, 39, 35, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-brown);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 0.8rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        .logo img {
+            height: 65px;
+            width: auto;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem; /* Reduced gap slightly to fit the new item */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary-brown);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Nav CTA Button */
+        .btn-donate-nav {
+            background-color: var(--secondary-brown);
+            color: var(--primary-gold) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 4px; 
+            font-weight: 600;
+            border: 1px solid var(--secondary-brown);
+            transition: all 0.3s ease;
+        }
+
+        .btn-donate-nav:hover {
+            background-color: transparent;
+            color: var(--secondary-brown) !important;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--secondary-brown);
+        }
+
+        /* --- HERO SECTION --- */
+        #home {
+            height: 90vh;
+            background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://source.unsplash.com/1600x900/?india,temple,community');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        #home h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-gold);
+            line-height: 1.1;
+        }
+
+        #home p {
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn-main {
+            padding: 1rem 3rem;
+            background-color: var(--primary-gold);
+            color: var(--secondary-brown);
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .btn-main:hover {
+            background-color: var(--primary-gold-dark);
+            transform: translateY(-3px);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        section {
+            padding: 6rem 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.8rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- MISSION SECTION --- */
+        #mission {
+            background-color: var(--bg-white);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .mission-card {
+            background: var(--bg-cream);
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            transition: transform 0.3s;
+            border-bottom: 4px solid var(--primary-gold);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .mission-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* --- GALLERY CAROUSEL SECTION --- */
+        #gallery {
+            background-color: var(--bg-cream);
+            position: relative;
+        }
+
+        .slideshow-container {
+            max-width: 900px;
+            position: relative;
+            margin: auto;
+            box-shadow: var(--shadow-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 4px solid white;
+        }
+
+        .mySlides {
+            display: none;
+        }
+
+        .mySlides img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        /* Next & previous buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.3);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: var(--primary-gold);
+            color: var(--secondary-brown);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 1.2rem;
+            padding: 15px 12px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: var(--primary-gold);
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        /* --- STUDIES SECTION (NEW) --- */
+        #studies {
+            background-color: var(--bg-white);
+        }
+
+        .studies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .studies-card {
+            background: var(--bg-cream);
+            padding: 2.5rem;
+            border-radius: 8px;
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary-brown);
+        }
+        
+        .studies-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            color: var(--primary-gold-dark);
+        }
+
+
+        /* --- DONATE SECTION --- */
+        #donate {
+            background-color: var(--secondary-brown);
+            color: white;
+            padding-bottom: 6rem;
+        }
+
+        #donate .section-title, #donate .section-subtitle {
+            color: var(--primary-gold);
+        }
+        
+        #donate .section-subtitle {
+            color: #ddd;
+        }
+
+        .donate-container {
+            display: flex;
+            flex-wrap: wrap;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .donate-details {
+            flex: 1;
+            padding: 3rem;
+            color: var(--secondary-brown);
+            border-right: 1px solid #eee;
+        }
+
+        .donate-details h3 {
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--primary-gold);
+            padding-left: 15px;
+        }
+
+        .bank-info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .bank-info-table td {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.05rem;
+        }
+
+        .bank-info-table td:first-child {
+            font-weight: 600;
+            width: 140px;
+            color: #666;
+        }
+
+        .note {
+            font-size: 0.85rem;
+            color: #777;
+            margin-top: 2rem;
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .donate-qr {
+            flex: 1;
+            padding: 3rem;
+            background-color: #fcfcfc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--secondary-brown);
+        }
+
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border: 2px dashed var(--primary-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .qr-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .upi-id {
+            background: var(--bg-cream);
+            padding: 0.5rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* --- BOARD SECTION --- */
+        #board {
+            background-color: var(--bg-cream);
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .board-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--primary-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background-color: #ddd;
+        }
+
+        .board-member h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.3rem;
+        }
+
+        .board-member span {
+            color: var(--primary-gold-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        /* --- JOIN US --- */
+        #join {
+            background-color: var(--bg-white);
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: var(--bg-cream);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+            background: white;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 16px;
+            background-color: var(--secondary-brown);
+            color: white;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--primary-gold);
+            color: var(--secondary-brown);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #2b1b17;
+            color: #aaa;
+            padding: 4rem 10% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                position: absolute;
+                top: 80px;
+                right: -100%;
+                background-color: var(--bg-white);
+                flex-direction: column;
+                width: 100%;
+                padding: 2rem;
+                transition: 0.4s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { right: 0; }
+            
+            #home h1 { font-size: 2.8rem; }
+            .donate-container { flex-direction: column; }
+            .donate-details { border-right: none; border-bottom: 1px solid #eee; }
+            section { padding: 4rem 5%; }
+            .mySlides img { height: 300px; } 
+            
+            .nav-links a { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#home" class="logo">
+            <img src="./Logo.png" alt="Bharat Ekatvam Logo">
+        </a>
+        <div class="menu-toggle" id="mobile-menu">
+            &#9776;
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#studies">Bharat Studies Center</a></li> <li><a href="#board">Board</a></li>
+            <li><a href="#join">Join Us</a></li>
+            <li><a href="#donate" class="btn-donate-nav">Donate</a></li>
+        </ul>
+    </nav>
+
+    <header id="home">
+        <h1>Uniting Bharat,<br>Empowering Lives</h1>
+        <p>Preserving heritage, fostering unity, and serving the nation with 'Seva' and 'Dharma'.</p>
+        <a href="#donate" class="btn-main">Make a Contribution</a>
+    </header>
+
+    <section id="mission">
+        <h2 class="section-title">Our Pillars</h2>
+        <p class="section-subtitle">We work tirelessly across three core areas to build a stronger nation.</p>
+        <div class="mission-grid">
+            <div class="mission-card">
+                <h3>Cultural Heritage</h3>
+                <p>Reviving ancient traditions and ensuring the wisdom of our ancestors is passed down to the youth.</p>
+            </div>
+            <div class="mission-card">
+                <h3>National Unity</h3>
+                <p>Organizing community dialogues to bridge gaps and foster a spirit of 'Ekatvam' (Oneness).</p>
+            </div>
+            <div class="mission-card">
+                <h3>Social Welfare</h3>
+                <p>Direct aid, medical camps, and educational scholarships for the underprivileged.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <h2 class="section-title">Our Impact</h2>
+        <p class="section-subtitle">Glimpses of our recent ground activities and community engagement.</p>
+        
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="https://source.unsplash.com/1000x500/?india,charity,crowd" alt="Community Event">
+                <div class="text">Community Food Drives</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://source.unsplash.com/1000x500/?india,school,children" alt="Education">
+                <div class="text">Education for All</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="https://source.unsplash.com/1000x500/?india,culture,festival" alt="Culture">
+                <div class="text">Celebrating Our Heritage</div>
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+        <div class="dot-container">
+            <span class="dot" onclick="currentSlide(1)"></span> 
+            <span class="dot" onclick="currentSlide(2)"></span> 
+            <span class="dot" onclick="currentSlide(3)"></span> 
+        </div>
+    </section>
+    
+    <section id="studies">
+        <h2 class="section-title">Our Flagship Wing: CENTER FOR BHARAT STUDIES</h2>
+        <p class="section-subtitle">Dedicated to academic research, policy advocacy, and intellectual discourse on Indian civilization and governance.</p>
+        
+        <div class="studies-grid">
+            <div class="studies-card">
+                <h3>Research & Policy</h3>
+                <p>Conducting in-depth, unbiased research on socio-economic, cultural, and historical issues affecting modern India.</p>
+            </div>
+            <div class="studies-card">
+                <h3>Publications & Journals</h3>
+                <p>Publishing peer-reviewed academic papers, policy briefs, and journals to disseminate knowledge globally.</p>
+            </div>
+            <div class="studies-card">
+                <h3>Fellowship Programs</h3>
+                <p>Nurturing the next generation of scholars and policymakers through mentorship and comprehensive fellowship programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate">
+        <h2 class="section-title">Support The Cause</h2>
+        <p class="section-subtitle">Your contribution helps us sustain our on-ground activities. Donations are eligible for tax exemption.</p>
+        
+        <div class="donate-container">
+            <div class="donate-details">
+                <h3>Bank Transfer Details</h3>
+                <table class="bank-info-table">
+                    <tr>
+                        <td>Account Name</td>
+                        <td><strong>Bharat Ekatvam Foundation</strong></td>
+                    </tr>
+                    <tr>
+                        <td>Account No.</td>
+                        <td>1234 5678 9012</td> </tr>
+                    <tr>
+                        <td>IFSC Code</td>
+                        <td>SBIN0001234</td> </tr>
+                    <tr>
+                        <td>Bank Name</td>
+                        <td>State Bank of India</td> </tr>
+                    <tr>
+                        <td>Branch</td>
+                        <td>New Delhi Main Branch</td> </tr>
+                </table>
+                <div class="note">
+                    * Please share the transaction screenshot to accounts@bharatekatvam.org for 80G Receipt.
+                </div>
+            </div>
+
+            <div class="donate-qr">
+                <h3>Scan to Pay</h3>
+                <div class="qr-placeholder">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="Payment QR Code">
+                </div>
+                <p>Accepts UPI / GPay / Paytm / PhonePe</p>
+                <div class="upi-id">bharatekatvam@sbi</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="board">
+        <h2 class="section-title">Leadership</h2>
+        <p class="section-subtitle">Guided by experienced professionals and veterans.</p>
+        <div class="board-grid">
+            <div class="board-member">
+                <img src="" alt="Photo"> <h4>Dr. Rajesh Kumar</h4>
+                <span>Chairman</span>
+            </div>
+            <div class="board-member">
+                <img src="" alt="Photo"> <h4>Smt. Anjali Rao</h4>
+                <span>Director of Operations</span>
+            </div>
+            <div class="board-member">
+                <img src="" alt="Photo"> <h4>Col. V.K. Singh (Retd)</h4>
+                <span>Strategic Advisor</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="join">
+        <h2 class="section-title">Join the Movement</h2>
+        <p class="section-subtitle">Dedicate your time and skills for the nation.</p>
+        <div class="form-wrapper">
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <select>
+                    <option value="" disabled selected>Area of Interest</option>
+                    <option>Field Volunteering</option>
+                    <option>Social Media / IT</option>
+                    <option>Fundraising</option>
+                    <option>Event Management</option>
+                </select>
+                <textarea rows="5" placeholder="Why do you want to join us?"></textarea>
+                <button type="submit">Submit Application</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Bharat Ekatvam</h4>
+                <p>A non-profit organization dedicated to the service of the nation and the preservation of its culture.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#mission">Our Mission</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                    <li><a href="#board">Board Members</a></li>
+                    <li><a href="#join">Volunteer</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Email: info@bharatekatvam.org</li>
+                    <li>Phone: +91 98765 43210</li>
+                    <li>Address: New Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        // --- MOBILE MENU SCRIPT ---
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => navLinks.classList.remove('active'));
+        });
+
+        // --- CAROUSEL SLIDESHOW SCRIPT ---
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+        }
+
+        // Auto Scroll (Optional: Change 5000 to change speed in milliseconds)
+        setInterval(function() {
+            plusSlides(1);
+        }, 5000);
+    </script>
+</body>
+</html>
