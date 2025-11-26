@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bharat Ekatvam Foundation</title>
+    
+    <link rel="icon" type="image/png" href="./Logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -49,23 +52,55 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            padding: 0.8rem 5%;
+            padding: 0.6rem 5%; /* Adjusted padding */
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid var(--primary-gold);
         }
 
+        /* --- LOGO STYLING (UPDATED) --- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
         .logo img {
-            height: 65px;
+            height: 55px; /* Adjusted height to balance with text */
             width: auto;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-brown);
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-sub {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--primary-gold-dark);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .nav-links {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 1.5rem; /* Reduced gap slightly to fit the new item */
+            gap: 1.5rem; 
         }
 
         .nav-links a {
@@ -302,7 +337,7 @@
             to {opacity: 1}
         }
 
-        /* --- STUDIES SECTION (NEW) --- */
+        /* --- STUDIES SECTION --- */
         #studies {
             background-color: var(--bg-white);
         }
@@ -586,6 +621,11 @@
             .mySlides img { height: 300px; } 
             
             .nav-links a { font-size: 1rem; }
+
+            /* Mobile Logo Adjustments */
+            .logo img { height: 45px; }
+            .logo-main { font-size: 1.1rem; }
+            .logo-sub { font-size: 0.6rem; }
         }
     </style>
 </head>
@@ -594,6 +634,10 @@
     <nav>
         <a href="#home" class="logo">
             <img src="./Logo.png" alt="Bharat Ekatvam Logo">
+            <div class="logo-text-container">
+                <span class="logo-main">BHARAT EKATVAM</span>
+                <span class="logo-sub">FOUNDATION</span>
+            </div>
         </a>
         <div class="menu-toggle" id="mobile-menu">
             &#9776;
@@ -602,7 +646,8 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#mission">Mission</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#studies">Bharat Studies Center</a></li> <li><a href="#board">Board</a></li>
+            <li><a href="#studies">Bharat Studies Center</a></li> 
+            <li><a href="#board">Board</a></li>
             <li><a href="#join">Join Us</a></li>
             <li><a href="#donate" class="btn-donate-nav">Donate</a></li>
         </ul>
