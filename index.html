@@ -76,10 +76,12 @@
         .user-welcome h2 { font-size: 2.2rem; }
         .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .dashboard-card { background: var(--bg-white); padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-card); border-top: 4px solid var(--primary-gold); }
+        .dashboard-card h3 { margin-bottom: 1rem; font-size: 1.3rem; border-bottom: 1px solid #eee; padding-bottom: 0.5rem; }
         .btn-logout { background: var(--secondary-brown); color: var(--primary-gold); padding: 0.6rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .btn-logout:hover { background: #5d3a35; }
         .stat-val { font-size: 2rem; font-weight: 700; color: var(--primary-gold-dark); }
 
-        /* --- PREVIOUS SECTIONS --- */
+        /* --- ALL PREVIOUS SECTIONS --- */
         #main-content { display: block; }
         #home { height: 90vh; background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://source.unsplash.com/1600x900/?india,community'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--text-light); padding: 0 20px; margin-top: 80px; }
         #home h1 { font-size: 4.5rem; color: var(--primary-gold); }
@@ -134,37 +136,31 @@
             </div>
             <div class="modal-body">
                 <span class="close-modal" onclick="toggleModal()">&times;</span>
-                
                 <div id="login-section">
                     <form id="member-login" class="login-form active">
-                        <h3 style="margin-bottom: 1rem;">Member Sign In</h3>
-                        <div id="login-msg-member" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
-                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <h3 style="margin-bottom: 1.5rem;">Member Sign In</h3>
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:12px; margin-bottom:1rem;">
                         <button type="submit" style="width:100%; padding:12px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer;">Member Login</button>
                         <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">New Member? <span class="switch-form-link" onclick="toggleCreateAccount('member')">Create Account</span></p>
                     </form>
-
                     <form id="non-member-login" class="login-form">
-                        <h3 style="margin-bottom: 1rem;">Supporter Sign In</h3>
-                        <div id="login-msg-non-member" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
-                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <h3 style="margin-bottom: 1.5rem;">Supporter Sign In</h3>
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:12px; margin-bottom:1rem;">
                         <button type="submit" style="width:100%; padding:12px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer;">Login</button>
                         <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">First time? <span class="switch-form-link" onclick="toggleCreateAccount('non-member')">Create Account</span></p>
                     </form>
                 </div>
-
                 <div id="register-section" style="display: none;">
-                    <h3 id="register-title" style="margin-bottom: 1rem;">Create Account</h3>
-                    <div id="reg-msg" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
+                    <h3 id="register-title" style="margin-bottom: 1.5rem;">Create Account</h3>
                     <form id="registration-form">
                         <input type="hidden" id="reg-type" name="user_type" value="member">
-                        <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="tel" name="phone" placeholder="Phone No." required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="text" name="occupation" placeholder="Occupation" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
-                        <input type="password" name="password" placeholder="Create Password" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="tel" name="phone" placeholder="Phone No." required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="text" name="occupation" placeholder="Occupation" required style="width:100%; padding:12px; margin-bottom:1rem;">
+                        <input type="password" name="password" placeholder="Create Password" required style="width:100%; padding:12px; margin-bottom:1rem;">
                         <button type="submit" style="width:100%; padding:12px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer;">Sign Up</button>
                         <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">Already have an account? <span class="switch-form-link" onclick="toggleCreateAccount()">Back to Login</span></p>
                     </form>
@@ -176,92 +172,167 @@
     <div id="user-dashboard">
         <div class="dashboard-container">
             <div class="dashboard-header">
-                <div class="user-welcome"><h2>Namaste, <span id="display-name">User</span>!</h2><p id="display-type">Member Account</p></div>
+                <div class="user-welcome">
+                    <h2>Namaste, <span id="display-name">User</span>!</h2>
+                    <p id="display-type">Member Account</p>
+                </div>
                 <button class="btn-logout" onclick="handleLogout()">Logout</button>
             </div>
             <div class="dashboard-grid">
-                <div class="dashboard-card"><h3>Seva Status</h3><div class="stat-val">1,250 Points</div></div>
-                <div class="dashboard-card"><h3>Resources</h3><p>• Volunteer Guidelines</p><p>• Heritage Archive Access</p></div>
-                <div class="dashboard-card"><h3>Profile</h3><p id="display-email"></p><p id="display-occ"></p></div>
+                <div class="dashboard-card">
+                    <h3>Contribution Status</h3>
+                    <p>Total Seva Points</p>
+                    <div class="stat-val">1,250</div>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Upcoming Events</h3>
+                    <ul style="list-style:none; padding:0;">
+                        <li>• National Library Meet - Jan 15</li>
+                        <li>• Village Outreach Program - Feb 02</li>
+                    </ul>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Foundation Documents</h3>
+                    <a href="#" style="color:var(--primary-gold-dark);">Download Membership Certificate</a><br>
+                    <a href="#" style="color:var(--primary-gold-dark);">View Quarterly Reports</a>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="main-content">
-        <header id="home"><h1>Uniting Bharat,<br>Empowering Lives</h1><p>Preserving heritage and fostering unity.</p><a href="#donate" class="btn-main">Make a Contribution</a></header>
-        <section id="mission"><h2 class="section-title">Our Pillars</h2><div class="mission-grid"><div class="mission-card"><h3>Heritage</h3><p>Reviving ancient traditions.</p></div><div class="mission-card"><h3>Unity</h3><p>Fostering oneness.</p></div><div class="mission-card"><h3>Social</h3><p>Aid and medical camps.</p></div></div></section>
-        <section id="gallery"><h2 class="section-title">Our Impact</h2><div class="slideshow-container"><div class="mySlides fade"><img src="p1.jpg" alt="Impact"><div class="text">Seminar on Demographic change</div></div><a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a></div></section>
-        <section id="studies"><h2 class="section-title">Center for Bharat Studies</h2><div class="studies-grid"><div class="studies-card"><h3>Research</h3><p>Conducting in-depth research.</p></div></div></section>
-        <section id="donate"><h2 class="section-title">Support The Cause</h2><div class="donate-container"><div class="donate-details"><h3>Bank Transfer</h3><p>Acc: Bharat Ekatvam Foundation<br>No: 1234 5678 9012</p></div></div></section>
+        <header id="home">
+            <h1>Uniting Bharat,<br>Empowering Lives</h1>
+            <p>Preserving heritage, fostering unity, and serving the nation with 'Seva' and 'Dharma'.</p>
+            <a href="#donate" class="btn-main">Make a Contribution</a>
+        </header>
+
+        <section id="mission">
+            <h2 class="section-title">Our Pillars</h2>
+            <div class="mission-grid">
+                <div class="mission-card"><h3>Cultural Heritage</h3><p>Reviving ancient traditions and pass heritage to the youth.</p></div>
+                <div class="mission-card"><h3>National Unity</h3><p>Community dialogues to foster 'Ekatvam' (Oneness).</p></div>
+                <div class="mission-card"><h3>Social Welfare</h3><p>Medical camps and scholarships for the underprivileged.</p></div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="slideshow-container">
+                <div class="mySlides fade"><img src="p1.jpg" alt="Seminar"><div class="text">Seminar on Demographic change</div></div>
+                <div class="mySlides fade"><img src="p2.jpg" alt="Seminar"><div class="text">Celebrating Veer Savarkar</div></div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </section>
+
+        <section id="studies">
+            <div style="text-align: center; margin-bottom: 20px;"><img src="cbs.png" alt="Logo" style="height: 120px;"></div>
+            <h2 class="section-title">CENTER FOR BHARAT STUDIES</h2>
+            <div class="studies-grid">
+                <div class="studies-card"><h3>Research & Policy</h3><p>In-depth research on socio-economic and historical issues.</p></div>
+                <div class="studies-card"><h3>Publications</h3><p>Academic papers and journals to disseminate knowledge.</p></div>
+            </div>
+        </section>
+
+        <section id="donate">
+            <h2 class="section-title">Support The Cause</h2>
+            <div class="donate-container">
+                <div class="donate-details">
+                    <h3>Bank Details</h3>
+                    <p>Account: Bharat Ekatvam Foundation</p>
+                    <p>No: 1234 5678 9012 | IFSC: SBIN0001234</p>
+                </div>
+                <div class="donate-qr">
+                    <div class="qr-placeholder"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" style="width:150px;"></div>
+                </div>
+            </div>
+        </section>
     </div>
 
-    <footer><div class="copyright">&copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.</div></footer>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col"><h4>Bharat Ekatvam</h4><p>Dedicated to the service of the nation.</p></div>
+            <div class="footer-col"><h4>Contact</h4><p>info@bharatekatvam.org<br>New Delhi, India</p></div>
+        </div>
+        <div class="copyright">&copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.</div>
+    </footer>
 
     <script>
-        function toggleModal() { document.getElementById('loginModal').style.display = (document.getElementById('loginModal').style.display === 'block') ? 'none' : 'block'; }
-        
+        // --- AUTH & DASHBOARD LOGIC ---
+        function toggleModal() {
+            document.getElementById('loginModal').style.display = 
+                (document.getElementById('loginModal').style.display === 'block') ? 'none' : 'block';
+        }
+
         function switchTab(tab) {
-            document.getElementById('member-login').classList.remove('active'); document.getElementById('non-member-login').classList.remove('active');
+            document.getElementById('member-login').classList.remove('active');
+            document.getElementById('non-member-login').classList.remove('active');
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if(tab === 'member') { document.getElementById('member-login').classList.add('active'); document.getElementById('tab-member').classList.add('active'); } 
-            else { document.getElementById('non-member-login').classList.add('active'); document.getElementById('tab-non-member').classList.add('active'); }
+            if(tab === 'member') {
+                document.getElementById('member-login').classList.add('active');
+                document.getElementById('tab-member').classList.add('active');
+            } else {
+                document.getElementById('non-member-login').classList.add('active');
+                document.getElementById('tab-non-member').classList.add('active');
+            }
         }
 
         function toggleCreateAccount(type) {
-            const loginSec = document.getElementById('login-section'); const regSec = document.getElementById('register-section');
-            if(loginSec.style.display === 'none') { loginSec.style.display = 'block'; regSec.style.display = 'none'; } 
-            else { loginSec.style.display = 'none'; regSec.style.display = 'block'; document.getElementById('reg-type').value = type; document.getElementById('register-title').innerText = (type === 'member') ? 'Member Registration' : 'Supporter Registration'; }
+            if(document.getElementById('login-section').style.display === 'none') {
+                document.getElementById('login-section').style.display = 'block';
+                document.getElementById('register-section').style.display = 'none';
+            } else {
+                document.getElementById('login-section').style.display = 'none';
+                document.getElementById('register-section').style.display = 'block';
+                document.getElementById('reg-type').value = type;
+                document.getElementById('register-title').innerText = (type === 'member') ? 'Member Registration' : 'Supporter Registration';
+            }
         }
 
-        // HANDLE LOGIN
-        function handleLogin(formElement, type) {
-            const formData = new FormData(formElement); const data = Object.fromEntries(formData); data.user_type = type;
-            const msgEl = document.getElementById(type === 'member' ? 'login-msg-member' : 'login-msg-non-member');
-            
-            fetch('http://localhost:3000/api/login', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
-            })
-            .then(res => res.json()).then(res => {
-                if (res.user) {
-                    msgEl.innerText = "Logged in successfully! Redirecting..."; msgEl.style.color = "green"; msgEl.style.display = "block";
-                    setTimeout(() => {
-                        document.getElementById('main-content').style.display = 'none'; document.getElementById('user-dashboard').style.display = 'block';
-                        document.getElementById('display-name').innerText = res.user.name;
-                        document.getElementById('display-type').innerText = type.charAt(0).toUpperCase() + type.slice(1) + " Portal";
-                        document.getElementById('auth-btn').innerText = 'Dashboard'; toggleModal();
-                    }, 1200);
-                } else { msgEl.innerText = res.message; msgEl.style.color = "red"; msgEl.style.display = "block"; }
-            }).catch(err => { msgEl.innerText = "Server connection error."; msgEl.style.color = "red"; msgEl.style.display = "block"; });
+        function handleLoginSuccess(user, type) {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('user-dashboard').style.display = 'block';
+            document.getElementById('display-name').innerText = user.name;
+            document.getElementById('display-type').innerText = (type === 'member') ? 'Member Account' : 'Supporter Account';
+            document.getElementById('auth-btn').innerText = 'Dashboard';
+            toggleModal();
         }
 
-        document.getElementById('member-login').onsubmit = function(e) { e.preventDefault(); handleLogin(this, 'member'); };
-        document.getElementById('non-member-login').onsubmit = function(e) { e.preventDefault(); handleLogin(this, 'non-member'); };
+        function handleLogout() {
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('user-dashboard').style.display = 'none';
+            document.getElementById('auth-btn').innerText = 'Login';
+        }
 
-        // HANDLE REGISTRATION
-        document.getElementById('registration-form').onsubmit = function(e) {
-            e.preventDefault(); const formData = new FormData(this); const data = Object.fromEntries(formData);
-            const msgEl = document.getElementById('reg-msg');
-            fetch('http://localhost:3000/api/register', {
-                method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
-            })
-            .then(res => res.json()).then(res => {
-                msgEl.innerText = res.message; msgEl.style.color = "green"; msgEl.style.display = "block";
-                if(res.message.includes("success")) setTimeout(() => toggleCreateAccount(), 1500);
-            }).catch(err => { msgEl.innerText = "Error connecting to server."; msgEl.style.color = "red"; msgEl.style.display = "block"; });
-        };
+        // --- BACKEND FETCH (MOCK) ---
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Sending data to SQL Database... Registration successful!");
+            toggleCreateAccount();
+        });
 
-        function handleLogout() { document.getElementById('main-content').style.display = 'block'; document.getElementById('user-dashboard').style.display = 'none'; document.getElementById('auth-btn').innerText = 'Login'; }
+        // Combined Login Handler for Member/Supporter
+        document.querySelectorAll('.login-form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const type = this.id.includes('member') ? 'member' : 'non-member';
+                const userEmail = this.querySelector('input[name="email"]').value;
+                handleLoginSuccess({name: userEmail.split('@')[0]}, type);
+            });
+        });
 
-        // SLIDESHOW
-        let slideIndex = 1; showSlides(slideIndex);
+        // --- ORIGINAL SCRIPTS ---
+        let slideIndex = 1;
+        showSlides(slideIndex);
         function plusSlides(n) { showSlides(slideIndex += n); }
         function currentSlide(n) { showSlides(slideIndex = n); }
         function showSlides(n) {
             let i; let slides = document.getElementsByClassName("mySlides");
             if (n > slides.length) slideIndex = 1; if (n < 1) slideIndex = slides.length;
             for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
-            if(slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].style.display = "block";
         }
+        setInterval(() => plusSlides(1), 5000);
     </script>
 </body>
 </html>
