@@ -128,6 +128,7 @@
             border-radius: 4px;
             color: var(--secondary-brown) !important;
             font-size: 0.85rem !important;
+            cursor: pointer;
         }
 
         .btn-donate-nav {
@@ -167,7 +168,7 @@
 
         .modal-content {
             background-color: var(--bg-white);
-            margin: 10vh auto;
+            margin: 5vh auto;
             width: 90%;
             max-width: 450px;
             border-radius: 12px;
@@ -205,7 +206,9 @@
         }
 
         .modal-body {
-            padding: 2.5rem;
+            padding: 2rem;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .login-form {
@@ -221,7 +224,13 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--secondary-brown);
-            padding: 10px;
+            padding: 5px;
+        }
+
+        .switch-form-link {
+            color: var(--primary-gold-dark);
+            cursor: pointer;
+            text-decoration: underline;
         }
 
         /* --- HERO SECTION --- */
@@ -741,28 +750,51 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <button class="tab-btn active" onclick="switchTab('member')">Member Login</button>
-                <button class="tab-btn" onclick="switchTab('non-member')">Non-Member Login</button>
+                <button class="tab-btn active" id="tab-member" onclick="switchTab('member')">Member Portal</button>
+                <button class="tab-btn" id="tab-non-member" onclick="switchTab('non-member')">Non-Member Portal</button>
             </div>
             <div class="modal-body">
                 <span class="close-modal" onclick="toggleModal()">&times;</span>
                 
-                <form id="member-login" class="login-form active">
-                    <h3 style="margin-bottom: 1.5rem;">Access Portal</h3>
-                    <input type="text" placeholder="Member ID / Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <button type="submit">Member Sign In</button>
-                </form>
+                <div id="login-section">
+                    <form id="member-login" class="login-form active">
+                        <h3 style="margin-bottom: 1.5rem;">Member Sign In</h3>
+                        <input type="email" name="email" placeholder="Mail ID" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Member Login</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            New Member? <span class="switch-form-link" onclick="toggleCreateAccount('member')">Create Account</span>
+                        </p>
+                    </form>
 
-                <form id="non-member-login" class="login-form">
-                    <h3 style="margin-bottom: 1.5rem;">Supporter Login</h3>
-                    <input type="email" placeholder="Email Address" required>
-                    <input type="password" placeholder="Password" required>
-                    <button type="submit">Sign In</button>
-                    <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
-                        Don't have an account? <a href="#join" onclick="toggleModal()" style="color: var(--primary-gold-dark);">Join the Movement</a>
-                    </p>
-                </form>
+                    <form id="non-member-login" class="login-form">
+                        <h3 style="margin-bottom: 1.5rem;">Supporter Sign In</h3>
+                        <input type="email" name="email" placeholder="Mail ID" required>
+                        <input type="password" name="password" placeholder="Password" required>
+                        <button type="submit">Login</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            First time here? <span class="switch-form-link" onclick="toggleCreateAccount('non-member')">Create Account</span>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="register-section" style="display: none;">
+                    <h3 id="register-title" style="margin-bottom: 1.5rem;">Create Account</h3>
+                    <form id="registration-form">
+                        <input type="hidden" id="reg-type" name="user_type" value="member">
+                        
+                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="email" name="email" placeholder="Mail ID" required>
+                        <input type="tel" name="phone" placeholder="Phone No." required>
+                        <input type="text" name="occupation" placeholder="Occupation" required>
+                        <input type="password" name="password" placeholder="Create Password" required>
+                        
+                        <button type="submit">Sign Up</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            Already have an account? <span class="switch-form-link" onclick="toggleCreateAccount()">Back to Login</span>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -991,10 +1023,13 @@
     </footer>
 
     <script>
-        // --- MODAL LOGIC ---
+        // --- NEW MODAL & DATABASE TOGGLE UPDATES ---
         function toggleModal() {
             const modal = document.getElementById('loginModal');
             modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+            // Reset to login section whenever modal is opened/closed
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('register-section').style.display = 'none';
         }
 
         function switchTab(tab) {
@@ -1015,7 +1050,42 @@
             }
         }
 
-        // Close modal when clicking outside content
+        function toggleCreateAccount(type) {
+            const loginSec = document.getElementById('login-section');
+            const regSec = document.getElementById('register-section');
+            const regType = document.getElementById('reg-type');
+            const regTitle = document.getElementById('register-title');
+
+            if (loginSec.style.display === 'none') {
+                loginSec.style.display = 'block';
+                regSec.style.display = 'none';
+            } else {
+                loginSec.style.display = 'none';
+                regSec.style.display = 'block';
+                regType.value = type;
+                regTitle.innerText = type === 'member' ? 'Member Registration' : 'Supporter Registration';
+            }
+        }
+
+        // DATABASE CONNECTION (PLACEHOLDER FOR YOUR BACKEND API)
+        // You will need to build a Node.js/PHP backend to handle these endpoints
+        document.getElementById('registration-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+
+            console.log("Connecting to SQL via Backend API...", data);
+            alert("This will send data to your SQL database to store " + data.user_type + " details.");
+            
+            /* Example fetch call to your backend:
+            fetch('/api/register', {
+                method: 'POST',
+                body: JSON.stringify(data)
+            }).then(res => res.json()).then(res => alert('Account Created!'));
+            */
+        });
+
+        // --- PREVIOUS SCRIPTS (NO CHANGES) ---
         window.onclick = function(event) {
             const modal = document.getElementById('loginModal');
             if (event.target == modal) {
@@ -1023,27 +1093,21 @@
             }
         }
 
-        // --- JOIN FORM SCRIPT ---
         const form = document.getElementById('join-form');
         const result = document.getElementById('form-result');
         const submitBtn = document.getElementById('submit-btn');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault(); 
-            
             submitBtn.innerText = "Sending...";
             submitBtn.disabled = true;
-
             const formData = new FormData(form);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: json
             })
             .then(async (response) => {
@@ -1072,49 +1136,29 @@
             });
         });
 
-        // --- MOBILE MENU SCRIPT ---
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
-
-        mobileMenu.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
+        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => navLinks.classList.remove('active'));
         });
 
-        // --- CAROUSEL SLIDESHOW SCRIPT ---
         let slideIndex = 1;
         showSlides(slideIndex);
-
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
-        }
-
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function currentSlide(n) { showSlides(slideIndex = n); }
         function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("mySlides");
             let dots = document.getElementsByClassName("dot");
             if (n > slides.length) {slideIndex = 1}
             if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
+            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+            for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
             slides[slideIndex-1].style.display = "block";
             dots[slideIndex-1].className += " active";
         }
-
-        setInterval(function() {
-            plusSlides(1);
-        }, 5000);
+        setInterval(function() { plusSlides(1); }, 5000);
     </script>
 </body>
 </html>
