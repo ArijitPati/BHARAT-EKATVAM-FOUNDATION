@@ -3,83 +3,576 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Bharat Ekatvam Foundation</title>
+    <title>Bharat Ekatvam Foundation</title>
+    
     <link rel="icon" type="image/png" href="./Logo.png">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary-gold: #D4AF37; --primary-gold-dark: #B59020; --secondary-brown: #3E2723; --text-dark: #2C2C2C; --text-light: #FDFBF7; --bg-cream: #F9F7F2; --bg-white: #FFFFFF; --shadow-card: 0 10px 30px rgba(62, 39, 35, 0.08); }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.7; color: var(--text-dark); background-color: var(--bg-cream); }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--secondary-brown); }
-        nav { background-color: var(--bg-white); box-shadow: 0 2px 15px rgba(0,0,0,0.05); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 0.6rem 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--primary-gold); }
-        .logo { display: flex; align-items: center; gap: 15px; text-decoration: none; }
-        .logo img { height: 60px; }
-        .logo-main { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--secondary-brown); line-height: 1; }
-        .logo-sub { font-family: 'Poppins', sans-serif; font-size: 0.7rem; font-weight: 600; color: var(--primary-gold-dark); letter-spacing: 8.5px; text-transform: uppercase; display: block; }
-        .nav-links { list-style: none; display: flex; align-items: center; gap: 1rem; }
-        .dropdown { position: relative; display: inline-block; }
-        .dropbtn { background: transparent; color: var(--secondary-brown); padding: 0.5rem 1rem; font-size: 0.95rem; font-weight: 600; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; text-transform: uppercase; font-family: 'Poppins'; }
-        .dropdown-content { display: none; position: absolute; right: 0; background-color: white; min-width: 220px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1); z-index: 1; border-top: 3px solid var(--primary-gold); }
-        .dropdown-content a { color: var(--secondary-brown); padding: 12px 16px; text-decoration: none; display: block; font-size: 0.85rem; border-bottom: 1px solid #eee; }
-        .dropdown-content a:hover { background-color: var(--bg-cream); }
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            --primary-gold: #D4AF37;       /* Metallic Gold */
+            --primary-gold-dark: #B59020;  /* Darker Gold for hover */
+            --secondary-brown: #3E2723;    /* Deep Coffee Brown */
+            --text-dark: #2C2C2C;          /* Soft Black */
+            --text-light: #FDFBF7;         /* Ivory White */
+            --bg-cream: #F9F7F2;            /* Light Cream Background */
+            --bg-white: #FFFFFF;
+            --shadow-card: 0 10px 30px rgba(62, 39, 35, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--secondary-brown);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 0.6rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        /* --- LOGO STYLING --- */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 60px; 
+            width: auto;
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem; 
+            font-weight: 700;
+            color: var(--secondary-brown);
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-sub {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-gold-dark);
+            letter-spacing: 8.5px; 
+            text-transform: uppercase;
+            margin-left: 2px;
+            margin-top: 3px;
+            display: block;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem; 
+        }
+
+        /* --- DROPDOWN STYLING --- */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: transparent;
+            color: var(--secondary-brown);
+            padding: 0.5rem 1rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: var(--bg-white);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1;
+            border-radius: 4px;
+            border-top: 3px solid var(--primary-gold);
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: var(--secondary-brown);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-bottom: 1px solid #f1f1f1;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--bg-cream);
+            color: var(--primary-gold);
+        }
+
         .show { display: block; }
-        .btn-login-nav { border: 1px solid var(--primary-gold); padding: 0.5rem 1rem; border-radius: 4px; color: var(--secondary-brown) !important; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
-        #home { height: 100vh; background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://source.unsplash.com/1600x900/?india,heritage'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--text-light); }
-        #home h1 { font-size: 4.5rem; color: var(--primary-gold); margin-bottom: 1rem; }
-        .btn-main { padding: 1rem 3rem; background-color: var(--primary-gold); color: var(--secondary-brown); text-decoration: none; font-weight: 700; text-transform: uppercase; }
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 10vh auto; width: 90%; max-width: 400px; border-radius: 12px; padding: 2rem; position: relative; }
-        .close-modal { position: absolute; right: 20px; top: 10px; font-size: 2rem; cursor: pointer; }
-        .login-form input { width: 100%; padding: 12px; margin-bottom: 1rem; border: 1px solid #ddd; }
-        .login-form button { width: 100%; padding: 12px; background: var(--secondary-brown); color: var(--primary-gold); border: none; cursor: pointer; font-weight: 600; }
-        footer { background-color: #2b1b17; color: #aaa; padding: 2rem; text-align: center; }
+
+        /* Nav CTA Buttons */
+        .btn-login-nav {
+            border: 1px solid var(--primary-gold);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            color: var(--secondary-brown) !important;
+            font-size: 0.85rem !important;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .btn-donate-nav {
+            background-color: var(--secondary-brown);
+            color: var(--primary-gold) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 4px; 
+            font-weight: 600;
+            border: 1px solid var(--secondary-brown);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+
+        .btn-donate-nav:hover {
+            background-color: transparent;
+            color: var(--secondary-brown) !important;
+        }
+
+        /* --- LOGIN MODAL STYLES --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--bg-white);
+            margin: 5vh auto;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+            animation: modalFade 0.3s ease;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1.2rem;
+            border: none;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: #888;
+            transition: 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--bg-white);
+            color: var(--secondary-brown);
+            border-bottom: 3px solid var(--primary-gold);
+        }
+
+        .modal-body {
+            padding: 2.5rem;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .login-form { display: none; }
+        .login-form.active { display: block; }
+        .close-modal { float: right; font-size: 1.5rem; cursor: pointer; color: var(--secondary-brown); padding: 10px; }
+        .switch-form-link { color: var(--primary-gold-dark); cursor: pointer; text-decoration: underline; }
+
+        /* --- USER DASHBOARD STYLES --- */
+        #user-dashboard {
+            display: none;
+            padding-top: 120px;
+            min-height: 100vh;
+            background-color: var(--bg-cream);
+        }
+
+        .dashboard-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem; border-bottom: 2px solid var(--primary-gold); padding-bottom: 1rem; }
+        .btn-logout { background: var(--secondary-brown); color: var(--primary-gold); padding: 0.6rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; }
+
+        /* --- SECTION STYLES (ORIGINAL) --- */
+        #main-content { display: block; }
+        #home {
+            height: 90vh;
+            background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://images.unsplash.com/photo-1548013146-72479768bbaa?q=80&w=1600');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--text-light);
+            padding: 0 20px;
+            margin-top: 80px;
+        }
+
+        #home h1 { font-size: 4.5rem; margin-bottom: 1rem; color: var(--primary-gold); line-height: 1.1; }
+        #home p { font-size: 1.3rem; max-width: 750px; margin-bottom: 2.5rem; font-weight: 300; }
+
+        .btn-main {
+            padding: 1rem 3rem;
+            background-color: var(--primary-gold);
+            color: var(--secondary-brown);
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        section { padding: 6rem 10%; }
+        .section-title { text-align: center; margin-bottom: 1rem; font-size: 2.8rem; }
+        .mission-grid, .studies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .mission-card, .studies-card { background: var(--bg-white); padding: 3rem 2rem; border-radius: 8px; text-align: center; box-shadow: var(--shadow-card); border-bottom: 4px solid var(--primary-gold); transition: 0.3s; }
+        .slideshow-container { max-width: 900px; position: relative; margin: auto; box-shadow: var(--shadow-card); border-radius: 8px; overflow: hidden; border: 4px solid white; }
+        .mySlides img { width: 100%; height: 500px; object-fit: cover; }
+        
+        .donate-container { display: flex; flex-wrap: wrap; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3); max-width: 1000px; margin: 0 auto; color: var(--text-dark); }
+        .donate-details { flex: 1; padding: 3rem; border-right: 1px solid #eee; }
+        .donate-qr { flex: 1; padding: 3rem; background-color: #fcfcfc; text-align: center; }
+        
+        .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; text-align: center; }
+        .board-member img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--primary-gold); margin-bottom: 1.5rem; object-fit: cover; }
+        
+        footer { background-color: #2b1b17; color: #aaa; padding: 4rem 10% 2rem; }
+
+        @media (max-width: 768px) {
+            #home h1 { font-size: 2.8rem; }
+            .donate-container { flex-direction: column; }
+            .logo img { height: 45px; }
+            .logo-main { font-size: 1.1rem; }
+            .logo-sub { font-size: 0.6rem; letter-spacing: 5px; } 
+        }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="logo">
-            <img src="./Logo.png" alt="Logo">
-            <div class="logo-text-container"><span class="logo-main">BHARAT EKATVAM</span><span class="logo-sub">FOUNDATION</span></div>
+        <a href="#home" class="logo">
+            <img src="./Logo.png" alt="Bharat Ekatvam Logo">
+            <div class="logo-text-container">
+                <span class="logo-main">BHARAT EKATVAM</span>
+                <span class="logo-sub">FOUNDATION</span>
+            </div>
         </a>
+
         <ul class="nav-links">
-            <li><a href="javascript:void(0)" class="btn-login-nav" onclick="toggleModal()">Login</a></li>
+            <li><a href="javascript:void(0)" class="btn-login-nav" id="auth-btn" onclick="toggleModal()">Login</a></li>
+            
             <li class="dropdown">
-                <button onclick="toggleDropdown()" class="dropbtn">Menu ▾</button>
+                <button onclick="toggleDropdown()" class="dropbtn">Menu &#9662;</button>
                 <div id="myDropdown" class="dropdown-content">
-                    <a href="index.html">Home</a>
-                    <a href="mission.html">Mission</a>
-                    <a href="gallery.html">Gallery</a>
-                    <a href="studies.html">Bharat Studies Center</a>
-                    <a href="board.html">Board</a>
-                    <a href="join.html">Join Us</a>
-                    <a href="donate.html">Donate</a>
+                    <a href="#home" onclick="toggleDropdown()">Home</a>
+                    <a href="#mission" onclick="toggleDropdown()">Mission</a>
+                    <a href="#gallery" onclick="toggleDropdown()">Gallery</a>
+                    <a href="#studies" onclick="toggleDropdown()">Bharat Studies Center</a>
+                    <a href="#board" onclick="toggleDropdown()">Board</a>
+                    <a href="#join" onclick="toggleDropdown()">Join Us</a>
                 </div>
             </li>
+
+            <li><a href="#donate" class="btn-donate-nav">Donate</a></li>
         </ul>
     </nav>
 
-    <header id="home">
-        <h1>Uniting Bharat,<br>Empowering Lives</h1>
-        <p>Preserving heritage, fostering unity, and serving the nation.</p>
-        <a href="donate.html" class="btn-main">Make a Contribution</a>
-    </header>
-
     <div id="loginModal" class="modal">
         <div class="modal-content">
-            <span class="close-modal" onclick="toggleModal()">&times;</span>
-            <form class="login-form">
-                <h3>Login</h3>
-                <input type="email" placeholder="Mail ID" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit">Sign In</button>
-            </form>
+            <div class="modal-header">
+                <button class="tab-btn active" id="tab-member" onclick="switchTab('member')">Member Login</button>
+                <button class="tab-btn" id="tab-non-member" onclick="switchTab('non-member')">Supporter Login</button>
+            </div>
+            <div class="modal-body">
+                <span class="close-modal" onclick="toggleModal()">&times;</span>
+                
+                <div id="login-section">
+                    <form id="member-login" class="login-form active">
+                        <h3 style="margin-bottom: 1rem;">Member Sign In</h3>
+                        <div id="login-msg-member" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:15px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:15px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <button type="submit" style="width:100%; padding:15px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer; font-weight:600;">Login</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            New Member? <span class="switch-form-link" onclick="toggleCreateAccount('member')">Create Account</span>
+                        </p>
+                    </form>
+
+                    <form id="non-member-login" class="login-form">
+                        <h3 style="margin-bottom: 1rem;">Supporter Sign In</h3>
+                        <div id="login-msg-non-member" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:15px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="password" name="password" placeholder="Password" required style="width:100%; padding:15px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <button type="submit" style="width:100%; padding:15px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer; font-weight:600;">Login</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            First time? <span class="switch-form-link" onclick="toggleCreateAccount('non-member')">Create Account</span>
+                        </p>
+                    </form>
+                </div>
+
+                <div id="register-section" style="display: none;">
+                    <h3 id="register-title" style="margin-bottom: 1rem;">Create Account</h3>
+                    <div id="reg-msg" style="margin-bottom: 10px; font-weight: 600; display: none;"></div>
+                    <form id="registration-form">
+                        <input type="hidden" id="reg-type" name="user_type" value="member">
+                        <input type="text" name="name" placeholder="Full Name" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="email" name="email" placeholder="Mail ID" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="tel" name="phone" placeholder="Phone No." required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="text" name="occupation" placeholder="Occupation" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <input type="password" name="password" placeholder="Create Password" required style="width:100%; padding:12px; margin-bottom:1rem; border:1px solid #ddd;">
+                        <button type="submit" style="width:100%; padding:12px; background:var(--secondary-brown); color:var(--primary-gold); border:none; cursor:pointer; font-weight:600;">Sign Up</button>
+                        <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
+                            Already have an account? <span class="switch-form-link" onclick="toggleCreateAccount()">Back to Login</span>
+                        </p>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
+    <div id="user-dashboard">
+        <div class="dashboard-container">
+            <div class="dashboard-header">
+                <div>
+                    <h2>Namaste, <span id="display-name">User</span>!</h2>
+                    <p id="display-type" style="color:var(--primary-gold-dark); font-weight:600;">Member Portal</p>
+                </div>
+                <button class="btn-logout" onclick="handleLogout()">Logout</button>
+            </div>
+            <div class="dashboard-grid">
+                <div class="dashboard-card"><h3>Contribution</h3><div style="font-size:2rem; font-weight:700; color:var(--primary-gold-dark);">1,250 Points</div></div>
+                <div class="dashboard-card"><h3>Tools</h3><p>• Heritage Archives</p><p>• Volunteer Guidelines</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="main-content">
+        <header id="home">
+            <h1>Uniting Bharat,<br>Empowering Lives</h1>
+            <p>Preserving heritage, fostering unity, and serving the nation with 'Seva' and 'Dharma'.</p>
+            <a href="#donate" class="btn-main">Make a Contribution</a>
+        </header>
+
+        <section id="mission">
+            <h2 class="section-title">Our Pillars</h2>
+            <div class="mission-grid">
+                <div class="mission-card"><h3>Cultural Heritage</h3><p>Reviving ancient traditions and ensuring ancestral wisdom is passed down.</p></div>
+                <div class="mission-card"><h3>National Unity</h3><p>Organizing community dialogues to bridge gaps and foster 'Ekatvam'.</p></div>
+                <div class="mission-card"><h3>Social Welfare</h3><p>Medical camps and educational scholarships for the underprivileged.</p></div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2 class="section-title">Our Impact</h2>
+            <div class="slideshow-container">
+                <div class="mySlides fade"><img src="p1.jpg" alt="Impact"><div class="text">Impact Seminar</div></div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </section>
+
+        <section id="studies">
+            <h2 class="section-title">Center for Bharat Studies</h2>
+            <div class="studies-grid">
+                <div class="studies-card"><h3>Research & Policy</h3><p>In-depth research on socio-economic and cultural issues.</p></div>
+            </div>
+        </section>
+
+        <section id="donate">
+            <h2 class="section-title">Support The Cause</h2>
+            <div class="donate-container">
+                <div class="donate-details">
+                    <h3>Bank Transfer</h3>
+                    <p>Account: Bharat Ekatvam Foundation<br>No: 1234 5678 9012 | IFSC: SBIN0001234</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="board">
+            <h2 class="section-title">Leadership</h2>
+            <div class="board-grid">
+                <div class="board-member"><img src="vishal.jpg" alt="Trustee"><h4>Mr. Vishal Ghosh</h4><span>Trustee</span></div>
+            </div>
+        </section>
+    </div>
+
+    <footer><div style="text-align:center; padding:20px;">&copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.</div></footer>
+
     <script>
-        function toggleDropdown() { document.getElementById("myDropdown").classList.toggle("show"); }
-        function toggleModal() { const m = document.getElementById("loginModal"); m.style.display = (m.style.display === "block") ? "none" : "block"; }
-        window.onclick = function(e) { if (!e.target.matches('.dropbtn')) { var d = document.getElementById("myDropdown"); if (d.classList.contains('show')) d.classList.remove('show'); } }
+        /* --- DROPDOWN LOGIC --- */
+        function toggleDropdown() {
+            document.getElementById("myDropdown").classList.toggle("show");
+        }
+
+        // Close dropdown if user clicks outside
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+            if (event.target == document.getElementById('loginModal')) toggleModal();
+        }
+
+        /* --- AUTH & DASHBOARD LOGIC --- */
+        function toggleModal() {
+            const modal = document.getElementById('loginModal');
+            modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function switchTab(tab) {
+            document.getElementById('member-login').classList.remove('active');
+            document.getElementById('non-member-login').classList.remove('active');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if(tab === 'member') {
+                document.getElementById('member-login').classList.add('active');
+                document.getElementById('tab-member').classList.add('active');
+            } else {
+                document.getElementById('non-member-login').classList.add('active');
+                document.getElementById('tab-non-member').classList.add('active');
+            }
+        }
+
+        function toggleCreateAccount(type) {
+            const loginSec = document.getElementById('login-section');
+            const regSec = document.getElementById('register-section');
+            if(loginSec.style.display === 'none') {
+                loginSec.style.display = 'block'; regSec.style.display = 'none';
+            } else {
+                loginSec.style.display = 'none'; regSec.style.display = 'block';
+                document.getElementById('reg-type').value = type;
+                document.getElementById('register-title').innerText = (type === 'member') ? 'Member Registration' : 'Supporter Registration';
+            }
+        }
+
+        function handleLogin(formElement, type) {
+            const formData = new FormData(formElement);
+            const data = Object.fromEntries(formData);
+            data.user_type = type;
+            const msgEl = document.getElementById(type === 'member' ? 'login-msg-member' : 'login-msg-non-member');
+
+            fetch('http://localhost:3000/api/login', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json()).then(res => {
+                if (res.user) {
+                    msgEl.innerText = "Logged in successfully! Redirecting...";
+                    msgEl.style.color = "green"; msgEl.style.display = "block";
+                    setTimeout(() => {
+                        document.getElementById('main-content').style.display = 'none';
+                        document.getElementById('user-dashboard').style.display = 'block';
+                        document.getElementById('display-name').innerText = res.user.name;
+                        document.getElementById('auth-btn').innerText = 'Dashboard';
+                        toggleModal();
+                    }, 1200);
+                } else {
+                    msgEl.innerText = res.message; msgEl.style.color = "red"; msgEl.style.display = "block";
+                }
+            }).catch(() => {
+                msgEl.innerText = "Error connecting to server.";
+                msgEl.style.color = "red"; msgEl.style.display = "block";
+            });
+        }
+
+        document.getElementById('member-login').onsubmit = (e) => { e.preventDefault(); handleLogin(e.target, 'member'); };
+        document.getElementById('non-member-login').onsubmit = (e) => { e.preventDefault(); handleLogin(e.target, 'non-member'); };
+
+        function handleLogout() {
+            document.getElementById('main-content').style.display = 'block';
+            document.getElementById('user-dashboard').style.display = 'none';
+            document.getElementById('auth-btn').innerText = 'Login';
+        }
+
+        /* --- SLIDESHOW LOGIC --- */
+        let slideIndex = 1; showSlides(slideIndex);
+        function plusSlides(n) { showSlides(slideIndex += n); }
+        function showSlides(n) {
+            let i; let slides = document.getElementsByClassName("mySlides");
+            if (n > slides.length) slideIndex = 1; if (n < 1) slideIndex = slides.length;
+            for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            if(slides[slideIndex-1]) slides[slideIndex-1].style.display = "block";
+        }
     </script>
 </body>
 </html>
