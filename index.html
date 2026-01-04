@@ -236,7 +236,7 @@
         /* --- HERO SECTION --- */
         #home {
             height: 90vh;
-            background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://source.unsplash.com/1600x900/?india,temple,community');
+            background: linear-gradient(rgba(30, 20, 10, 0.7), rgba(30, 20, 10, 0.6)), url('https://images.unsplash.com/photo-1548013146-72479768bbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -782,13 +782,11 @@
                     <h3 id="register-title" style="margin-bottom: 1.5rem;">Create Account</h3>
                     <form id="registration-form">
                         <input type="hidden" id="reg-type" name="user_type" value="member">
-                        
                         <input type="text" name="name" placeholder="Full Name" required>
                         <input type="email" name="email" placeholder="Mail ID" required>
                         <input type="tel" name="phone" placeholder="Phone No." required>
                         <input type="text" name="occupation" placeholder="Occupation" required>
                         <input type="password" name="password" placeholder="Create Password" required>
-                        
                         <button type="submit">Sign Up</button>
                         <p style="text-align: center; margin-top: 1rem; font-size: 0.8rem;">
                             Already have an account? <span class="switch-form-link" onclick="toggleCreateAccount()">Back to Login</span>
@@ -827,113 +825,49 @@
     <section id="gallery">
         <h2 class="section-title">Our Impact</h2>
         <p class="section-subtitle">Glimpses of our recent ground activities and community engagement.</p>
-        
         <div class="slideshow-container">
-            <div class="mySlides fade">
-                <img src="p1.jpg" alt="Seminar">
-                <div class="text">Seminar on "Demographic change and its impact in West Bengal" @National Library, Kolkata</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="p2.jpg" alt="Seminar">
-                <div class="text">Celebrating birth anniversary of Veer Savarkar @Bharatiya Bhasha Parishad</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="p3.jpg" alt="Book Launch">
-                <div class="text">Book Launch on Dr. Shyama Prasad Mukherjee @BBP</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="p4.jpg" alt="Mahakumbh">
-                <div class="text">PURVAUTTHAN : Significance of Mahakumbh</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="p5.jpg" alt="Bengali Language Day">
-                <div class="text">Discussion session on Bengali Language Day</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img src="p6.jpg" alt="Seminar">
-                <div class="text">Seminar on Indian Media Laws</div>
-            </div>
-
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="mySlides fade"><img src="p1.jpg" alt="Seminar"><div class="text">Seminar on "Demographic change" @National Library</div></div>
+            <div class="mySlides fade"><img src="p2.jpg" alt="Seminar"><div class="text">Celebrating birth anniversary of Veer Savarkar</div></div>
+            <div class="mySlides fade"><img src="p3.jpg" alt="Book Launch"><div class="text">Book Launch on Dr. Shyama Prasad Mukherjee</div></div>
+            <div class="mySlides fade"><img src="p4.jpg" alt="Mahakumbh"><div class="text">PURVAUTTHAN : Significance of Mahakumbh</div></div>
+            <div class="mySlides fade"><img src="p5.jpg" alt="Bengali Day"><div class="text">Discussion session on Bengali Language Day</div></div>
+            <div class="mySlides fade"><img src="p6.jpg" alt="Seminar"><div class="text">Seminar on Indian Media Laws</div></div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a><a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
         <br>
-        
         <div class="dot-container">
-            <span class="dot" onclick="currentSlide(1)"></span> 
-            <span class="dot" onclick="currentSlide(2)"></span> 
-            <span class="dot" onclick="currentSlide(3)"></span> 
-            <span class="dot" onclick="currentSlide(4)"></span> 
-            <span class="dot" onclick="currentSlide(5)"></span> 
-            <span class="dot" onclick="currentSlide(6)"></span> 
+            <span class="dot" onclick="currentSlide(1)"></span><span class="dot" onclick="currentSlide(2)"></span><span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span><span class="dot" onclick="currentSlide(5)"></span><span class="dot" onclick="currentSlide(6)"></span>
         </div>
     </section>
     
     <section id="studies">
-        <div style="text-align: center; margin-bottom: 20px;">
-            <img src="cbs.png" alt="Center for Bharat Studies Logo" style="height: 120px; width: auto;">
-        </div>
-
-        <h2 class="section-title">Our Flagship Wing: CENTER FOR BHARAT STUDIES</h2>
-        <p class="section-subtitle">Dedicated to academic research, policy advocacy, and intellectual discourse on Indian civilization and governance.</p>
-        
+        <div style="text-align: center; margin-bottom: 20px;"><img src="cbs.png" alt="Center for Bharat Studies Logo" style="height: 120px; width: auto;"></div>
+        <h2 class="section-title">CENTER FOR BHARAT STUDIES</h2>
+        <p class="section-subtitle">Dedicated to academic research and policy advocacy on Indian civilization.</p>
         <div class="studies-grid">
-            <div class="studies-card">
-                <h3>Research & Policy</h3>
-                <p>Conducting in-depth, unbiased research on socio-economic, cultural, and historical issues affecting modern India.</p>
-            </div>
-            <div class="studies-card">
-                <h3>Publications & Journals</h3>
-                <p>Publishing peer-reviewed academic papers, policy briefs, and journals to disseminate knowledge globally.</p>
-            </div>
-            <div class="studies-card">
-                <h3>Fellowship Programs</h3>
-                <p>Nurturing the next generation of scholars and policymakers through mentorship and comprehensive fellowship programs.</p>
-            </div>
+            <div class="studies-card"><h3>Research & Policy</h3><p>Conducting in-depth research on socio-economic and cultural issues.</p></div>
+            <div class="studies-card"><h3>Publications</h3><p>Publishing academic papers and policy briefs.</p></div>
+            <div class="studies-card"><h3>Fellowships</h3><p>Nurturing the next generation of scholars.</p></div>
         </div>
     </section>
 
     <section id="donate">
         <h2 class="section-title">Support The Cause</h2>
-        <p class="section-subtitle">Your contribution helps us sustain our on-ground activities. Donations are eligible for tax exemption.</p>
-        
         <div class="donate-container">
             <div class="donate-details">
                 <h3>Bank Transfer Details</h3>
                 <table class="bank-info-table">
-                    <tr>
-                        <td>Account Name</td>
-                        <td><strong>Bharat Ekatvam Foundation</strong></td>
-                    </tr>
-                    <tr>
-                        <td>Account No.</td>
-                        <td>1234 5678 9012</td> </tr>
-                    <tr>
-                        <td>IFSC Code</td>
-                        <td>SBIN0001234</td> </tr>
-                    <tr>
-                        <td>Bank Name</td>
-                        <td>State Bank of India</td> </tr>
-                    <tr>
-                        <td>Branch</td>
-                        <td>New Delhi Main Branch</td> </tr>
+                    <tr><td>Account Name</td><td><strong>Bharat Ekatvam Foundation</strong></td></tr>
+                    <tr><td>Account No.</td><td>1234 5678 9012</td></tr>
+                    <tr><td>IFSC Code</td><td>SBIN0001234</td></tr>
+                    <tr><td>Bank Name</td><td>State Bank of India</td></tr>
                 </table>
-                <div class="note">
-                    * Please share the transaction screenshot to accounts@bharatekatvam.org for 80G Receipt.
-                </div>
+                <div class="note">* Share transaction screenshot for 80G Receipt.</div>
             </div>
-
             <div class="donate-qr">
                 <h3>Scan to Pay</h3>
-                <div class="qr-placeholder">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="Payment QR Code">
-                </div>
-                <p>Accepts UPI / GPay / Paytm / PhonePe</p>
+                <div class="qr-placeholder"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QR"></div>
                 <div class="upi-id">bharatekatvam@sbi</div>
             </div>
         </div>
@@ -941,53 +875,27 @@
 
     <section id="board">
         <h2 class="section-title">Leadership</h2>
-        <p class="section-subtitle">Guided by experienced professionals and veterans.</p>
         <div class="board-grid">
-            <div class="board-member">
-                <img src="vishal.jpg" alt="Mr. Vishal Ghosh"> 
-                <h4>Mr. Vishal Ghosh</h4>
-                <span>Chair Trustee</span>
-            </div>
-            <div class="board-member">
-                <img src="arijit.jpg" alt="Mr. Arijit Pati"> 
-                <h4>Mr. Arijit Pati</h4>
-                <span>Trustee</span>
-            </div>
-            <div class="board-member">
-                <img src="indranil.jpg" alt="Mr. Indranil Mookherjee"> 
-                <h4>Mr. Indranil Mookherjee</h4>
-                <span>Trustee</span>
-            </div>
+            <div class="board-member"><img src="vishal.jpg" alt="Vishal"><h4>Mr. Vishal Ghosh</h4><span>Chair Trustee</span></div>
+            <div class="board-member"><img src="arijit.jpg" alt="Arijit"><h4>Mr. Arijit Pati</h4><span>Trustee</span></div>
+            <div class="board-member"><img src="indranil.jpg" alt="Indranil"><h4>Mr. Indranil Mookherjee</h4><span>Trustee</span></div>
         </div>
     </section>
 
     <section id="join">
         <h2 class="section-title">Join the Movement</h2>
-        <p class="section-subtitle">Dedicate your time and skills for the nation.</p>
         <div class="form-wrapper">
-            
             <form id="join-form" action="https://api.web3forms.com/submit" method="POST">
-
                 <input type="hidden" name="access_key" value="5be77204-d96c-4187-ba19-56027aef8ed7">
-
                 <input type="text" name="fullname" placeholder="Full Name" required>
-                
                 <input type="email" name="email" placeholder="Email Address" required>
-                
                 <select name="interest" required>
                     <option value="" disabled selected>Area of Interest</option>
                     <option value="Field Volunteering">Field Volunteering</option>
-                    <option value="Social Media / IT">Social Media / IT</option>
-                    <option value="Fundraising">Fundraising</option>
-                    <option value="Event Management">Event Management</option>
+                    <option value="Social Media">Social Media</option>
                 </select>
-
-                <textarea name="message" rows="5" placeholder="Why do you want to join us?" required></textarea>
-
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
+                <textarea name="message" rows="5" placeholder="Why join us?" required></textarea>
                 <button type="submit" id="submit-btn">Submit Application</button>
-                
                 <p id="form-result" style="text-align: center; margin-top: 15px; font-weight: bold; display: none;"></p>
             </form>
         </div>
@@ -995,170 +903,124 @@
 
     <footer>
         <div class="footer-content">
-            <div class="footer-col">
-                <h4>Bharat Ekatvam</h4>
-                <p>A non-profit organization dedicated to the service of the nation and the preservation of its culture.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#mission">Our Mission</a></li>
-                    <li><a href="#donate">Donate</a></li>
-                    <li><a href="#board">Board Members</a></li>
-                    <li><a href="#join">Volunteer</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <ul>
-                    <li>Email: info@bharatekatvam.org</li>
-                    <li>Phone: +91 98765 43210</li>
-                    <li>Address: New Delhi, India</li>
-                </ul>
-            </div>
+            <div class="footer-col"><h4>Bharat Ekatvam</h4><p>Dedicated to national service and cultural preservation.</p></div>
+            <div class="footer-col"><h4>Contact</h4><ul><li>info@bharatekatvam.org</li><li>New Delhi, India</li></ul></div>
         </div>
-        <div class="copyright">
-            &copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.
-        </div>
+        <div class="copyright">&copy; 2025 Bharat Ekatvam Foundation. All Rights Reserved.</div>
     </footer>
 
     <script>
-        // --- NEW MODAL & DATABASE TOGGLE UPDATES ---
+        // --- MODAL & FORM TOGGLE LOGIC ---
         function toggleModal() {
             const modal = document.getElementById('loginModal');
             modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
-            // Reset to login section whenever modal is opened/closed
             document.getElementById('login-section').style.display = 'block';
             document.getElementById('register-section').style.display = 'none';
         }
 
         function switchTab(tab) {
-            const memberForm = document.getElementById('member-login');
-            const nonMemberForm = document.getElementById('non-member-login');
+            const mForm = document.getElementById('member-login');
+            const nmForm = document.getElementById('non-member-login');
             const tabs = document.querySelectorAll('.tab-btn');
-
             if (tab === 'member') {
-                memberForm.classList.add('active');
-                nonMemberForm.classList.remove('active');
-                tabs[0].classList.add('active');
-                tabs[1].classList.remove('active');
+                mForm.classList.add('active'); nmForm.classList.remove('active');
+                tabs[0].classList.add('active'); tabs[1].classList.remove('active');
             } else {
-                memberForm.classList.remove('active');
-                nonMemberForm.classList.add('active');
-                tabs[0].classList.remove('active');
-                tabs[1].classList.add('active');
+                mForm.classList.remove('active'); nmForm.classList.add('active');
+                tabs[0].classList.remove('active'); tabs[1].classList.add('active');
             }
         }
 
         function toggleCreateAccount(type) {
             const loginSec = document.getElementById('login-section');
             const regSec = document.getElementById('register-section');
-            const regType = document.getElementById('reg-type');
-            const regTitle = document.getElementById('register-title');
-
             if (loginSec.style.display === 'none') {
-                loginSec.style.display = 'block';
-                regSec.style.display = 'none';
+                loginSec.style.display = 'block'; regSec.style.display = 'none';
             } else {
-                loginSec.style.display = 'none';
-                regSec.style.display = 'block';
-                regType.value = type;
-                regTitle.innerText = type === 'member' ? 'Member Registration' : 'Supporter Registration';
+                loginSec.style.display = 'none'; regSec.style.display = 'block';
+                document.getElementById('reg-type').value = type;
+                document.getElementById('register-title').innerText = (type === 'member') ? 'Member Registration' : 'Supporter Registration';
             }
         }
 
-        // DATABASE CONNECTION (PLACEHOLDER FOR YOUR BACKEND API)
-        // You will need to build a Node.js/PHP backend to handle these endpoints
+        // --- BACKEND API CONNECTION (SQL) ---
+        
+        // Handle Registration
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
+            data.user_type = document.getElementById('reg-type').value;
 
-            console.log("Connecting to SQL via Backend API...", data);
-            alert("This will send data to your SQL database to store " + data.user_type + " details.");
-            
-            /* Example fetch call to your backend:
-            fetch('/api/register', {
+            fetch('http://localhost:3000/api/register', {
                 method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
-            }).then(res => res.json()).then(res => alert('Account Created!'));
-            */
+            })
+            .then(res => res.json())
+            .then(res => {
+                alert(res.message);
+                if(res.message.includes("successfully")) toggleCreateAccount();
+            })
+            .catch(err => alert("Error connecting to server. Make sure node server is running."));
         });
 
-        // --- PREVIOUS SCRIPTS (NO CHANGES) ---
-        window.onclick = function(event) {
-            const modal = document.getElementById('loginModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+        // Handle Member Login
+        document.getElementById('member-login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleLogin(this, 'member');
+        });
 
-        const form = document.getElementById('join-form');
-        const result = document.getElementById('form-result');
-        const submitBtn = document.getElementById('submit-btn');
+        // Handle Non-Member Login
+        document.getElementById('non-member-login').addEventListener('submit', function(e) {
+            e.preventDefault();
+            handleLogin(this, 'non-member');
+        });
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); 
-            submitBtn.innerText = "Sending...";
-            submitBtn.disabled = true;
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
+        function handleLogin(formElement, type) {
+            const formData = new FormData(formElement);
+            const data = Object.fromEntries(formData);
+            data.user_type = type;
 
-            fetch('https://api.web3forms.com/submit', {
+            fetch('http://localhost:3000/api/login', {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: json
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
             })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    result.style.display = "block";
-                    result.innerHTML = "Dhanyavad! Your application has been submitted successfully.";
-                    result.style.color = "#138808"; 
-                    form.reset(); 
+            .then(res => res.json())
+            .then(res => {
+                if (res.user) {
+                    alert("Welcome, " + res.user.name);
+                    toggleModal();
                 } else {
-                    result.style.display = "block";
-                    result.innerHTML = json.message;
-                    result.style.color = "red";
+                    alert(res.message);
                 }
             })
-            .catch(error => {
-                result.style.display = "block";
-                result.innerHTML = "Something went wrong! Please try again.";
-                result.style.color = "red";
-            })
-            .then(function() {
-                setTimeout(() => {
-                    submitBtn.innerText = "Submit Application";
-                    submitBtn.disabled = false;
-                }, 3000);
-            });
-        });
+            .catch(err => alert("Error connecting to server. Make sure node server is running."));
+        }
+
+        // --- ORIGINAL SITE SCRIPTS ---
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('loginModal')) toggleModal();
+        }
 
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
-        mobileMenu.addEventListener('click', () => { navLinks.classList.toggle('active'); });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navLinks.classList.remove('active'));
-        });
+        mobileMenu.addEventListener('click', () => navLinks.classList.toggle('active'));
+        navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => navLinks.classList.remove('active')));
 
         let slideIndex = 1;
         showSlides(slideIndex);
         function plusSlides(n) { showSlides(slideIndex += n); }
         function currentSlide(n) { showSlides(slideIndex = n); }
         function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-            for (i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
+            let i; let slides = document.getElementsByClassName("mySlides"); let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) slideIndex = 1; if (n < 1) slideIndex = slides.length;
+            for (i = 0; i < slides.length; i++) slides[i].style.display = "none";
+            for (i = 0; i < dots.length; i++) dots[i].className = dots[i].className.replace(" active", "");
+            slides[slideIndex-1].style.display = "block"; dots[slideIndex-1].className += " active";
         }
-        setInterval(function() { plusSlides(1); }, 5000);
+        setInterval(() => plusSlides(1), 5000);
     </script>
 </body>
 </html>
