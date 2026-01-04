@@ -233,6 +233,19 @@
             text-decoration: underline;
         }
 
+        /* --- NEW: Modal Message Display --- */
+        .modal-msg {
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: none;
+            text-align: center;
+        }
+        .modal-msg.success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; display: block; }
+        .modal-msg.error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; display: block; }
+
         /* --- HERO SECTION --- */
         #home {
             height: 90vh;
@@ -756,6 +769,8 @@
             <div class="modal-body">
                 <span class="close-modal" onclick="toggleModal()">&times;</span>
                 
+                <div id="modal-msg" class="modal-msg"></div>
+
                 <div id="login-section">
                     <form id="member-login" class="login-form active">
                         <h3 style="margin-bottom: 1.5rem;">Member Sign In</h3>
@@ -1023,11 +1038,21 @@
     </footer>
 
     <script>
+        // --- MODAL MESSAGE HELPER ---
+        function showModalMsg(message, type) {
+            const msgDiv = document.getElementById('modal-msg');
+            msgDiv.innerText = message;
+            msgDiv.className = 'modal-msg ' + type;
+            // Clear message after 5 seconds
+            setTimeout(() => { msgDiv.className = 'modal-msg'; }, 5000);
+        }
+
         // --- NEW MODAL & DATABASE TOGGLE UPDATES ---
         function toggleModal() {
             const modal = document.getElementById('loginModal');
             modal.style.display = (modal.style.display === 'block') ? 'none' : 'block';
-            // Reset to login section whenever modal is opened/closed
+            // Reset message and sections
+            document.getElementById('modal-msg').className = 'modal-msg';
             document.getElementById('login-section').style.display = 'block';
             document.getElementById('register-section').style.display = 'none';
         }
@@ -1036,6 +1061,7 @@
             const memberForm = document.getElementById('member-login');
             const nonMemberForm = document.getElementById('non-member-login');
             const tabs = document.querySelectorAll('.tab-btn');
+            document.getElementById('modal-msg').className = 'modal-msg';
 
             if (tab === 'member') {
                 memberForm.classList.add('active');
@@ -1055,6 +1081,7 @@
             const regSec = document.getElementById('register-section');
             const regType = document.getElementById('reg-type');
             const regTitle = document.getElementById('register-title');
+            document.getElementById('modal-msg').className = 'modal-msg';
 
             if (loginSec.style.display === 'none') {
                 loginSec.style.display = 'block';
@@ -1068,21 +1095,31 @@
         }
 
         // DATABASE CONNECTION (PLACEHOLDER FOR YOUR BACKEND API)
-        // You will need to build a Node.js/PHP backend to handle these endpoints
         document.getElementById('registration-form').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
 
             console.log("Connecting to SQL via Backend API...", data);
-            alert("This will send data to your SQL database to store " + data.user_type + " details.");
+            
+            // Replaced alert with in-website message
+            showModalMsg("Processing request... Data for " + data.user_type + " will be saved to the database.", "success");
             
             /* Example fetch call to your backend:
             fetch('/api/register', {
                 method: 'POST',
                 body: JSON.stringify(data)
-            }).then(res => res.json()).then(res => alert('Account Created!'));
+            }).then(res => res.json()).then(res => showModalMsg('Account Created!', 'success'));
             */
+        });
+
+        // Login placeholder messages
+        const loginForms = ['member-login', 'non-member-login'];
+        loginForms.forEach(formId => {
+            document.getElementById(formId).addEventListener('submit', function(e) {
+                e.preventDefault();
+                showModalMsg("Validating credentials... Please wait.", "success");
+            });
         });
 
         // --- PREVIOUS SCRIPTS (NO CHANGES) ---
